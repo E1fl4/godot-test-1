@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dhlebuevykum8"]
+
+[ext_resource type="PackedScene" uid="uid://bbgttcbs0frl3" path="res://Box.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://kjy704akrol" path="res://Ground.tscn" id="2_uu6xs"]
+
+[node name="Main" type="Node" unique_id=2111525478]
+
+[node name="Box" parent="." unique_id=1705134877 instance=ExtResource("1_glv2v")]
+z_index = 101
+position = Vector2(90, -43.000004)
+rotation = 0.33279967
+
+[node name="Box2" parent="." unique_id=1222339446 instance=ExtResource("1_glv2v")]
+z_index = 102
+position = Vector2(-80, -147.00002)
+rotation = -1.3926164
+
+[node name="Box3" parent="." unique_id=24600938 instance=ExtResource("1_glv2v")]
+z_index = 102
+position = Vector2(-23.999992, 89.000015)
+rotation = -4.6430387
+
+[node name="Ground" parent="." unique_id=1409816062 instance=ExtResource("2_uu6xs")]
+z_index = 100
+position = Vector2(0, 4328)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1458416579]
+metadata/_edit_lock_ = true
