@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://nhqdjq1scc6l"]
+
+[ext_resource type="Shader" uid="uid://dyvkkybuw5v35" path="res://shaders/skybox.gdshader" id="1_0bbpv"]
+[ext_resource type="Script" uid="uid://bvauv3ili1i6w" path="res://scripts/main.gd" id="1_bjd11"]
+[ext_resource type="PackedScene" uid="uid://cpvxsmiouyhj1" path="res://scenes/Ground.tscn" id="1_idj7w"]
+[ext_resource type="PackedScene" uid="uid://dutg5shj61l0l" path="res://scenes/Box.tscn" id="1_lhr70"]
+[ext_resource type="Texture2D" uid="uid://du2l6rm5hdeca" path="res://skybox/clouds1_south.bmp" id="2_c01mt"]
+[ext_resource type="PackedScene" uid="uid://bnf5th015gm8s" path="res://scenes/Player.tscn" id="2_kln2b"]
+[ext_resource type="Texture2D" uid="uid://10te02i60ays" path="res://skybox/clouds1_north.bmp" id="3_nxtc6"]
+[ext_resource type="Texture2D" uid="uid://rggby0okt8ua" path="res://skybox/clouds1_down_rotated.bmp" id="3_q8u5g"]
+[ext_resource type="Texture2D" uid="uid://cl15fisx8tosw" path="res://skybox/clouds1_west.bmp" id="4_jlsqs"]
+[ext_resource type="Texture2D" uid="uid://hi5y6tkv1jvp" path="res://skybox/clouds1_east.bmp" id="5_lhr70"]
+[ext_resource type="Texture2D" uid="uid://qk2i6b3mwjj8" path="res://skybox/clouds1_up_rotated.bmp" id="7_lhr70"]
+[ext_resource type="PackedScene" uid="uid://cp8v3uvj3yixo" path="res://scenes/Ball.tscn" id="11_wp0k4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twqln"]
+shader = ExtResource("1_0bbpv")
+shader_parameter/front = ExtResource("3_nxtc6")
+shader_parameter/back = ExtResource("2_c01mt")
+shader_parameter/left = ExtResource("5_lhr70")
+shader_parameter/right = ExtResource("4_jlsqs")
+shader_parameter/top = ExtResource("7_lhr70")
+shader_parameter/bottom = ExtResource("3_q8u5g")
+
+[sub_resource type="Sky" id="Sky_npsrk"]
+sky_material = SubResource("ShaderMaterial_twqln")
+
+[sub_resource type="Environment" id="Environment_cm0pq"]
+background_mode = 2
+sky = SubResource("Sky_npsrk")
+glow_enabled = true
+
+[node name="Main" type="Node" unique_id=1905994280]
+script = ExtResource("1_bjd11")
+box_scene = ExtResource("1_lhr70")
+ball_scene = ExtResource("11_wp0k4")
+
+[node name="Box" parent="." unique_id=124166682 instance=ExtResource("1_lhr70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8681259, 16.008307, 0)
+
+[node name="Box2" parent="." unique_id=795355642 instance=ExtResource("1_lhr70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.925159, -8.8553505)
+
+[node name="Box3" parent="." unique_id=1437329912 instance=ExtResource("1_lhr70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9500084, 8.891414, 3.8146973e-06)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1954900822]
+transform = Transform3D(-0.6853352, -0.66816854, -0.28959697, -0.08182546, -0.32450023, 0.9423397, -0.7236161, 0.6695149, 0.16771817, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1012116842]
+environment = SubResource("Environment_cm0pq")
+
+[node name="Ground" parent="." unique_id=401883419 instance=ExtResource("1_idj7w")]
+
+[node name="Player" parent="." unique_id=17098976 instance=ExtResource("2_kln2b")]
+
+[node name="Ball" parent="." unique_id=1894234957 instance=ExtResource("11_wp0k4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5405788, 5.045136, -6.5023165)

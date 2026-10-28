@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cpvxsmiouyhj1"]
+
+[ext_resource type="Texture2D" uid="uid://d3556do2fji2k" path="res://textures/grid.png" id="1_ywuge"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_npsrk"]
+size = Vector3(128, 16, 128)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvmbd"]
+albedo_texture = ExtResource("1_ywuge")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_npsrk"]
+material = SubResource("StandardMaterial3D_cvmbd")
+size = Vector3(128, 16, 128)
+
+[node name="Ground" type="StaticBody3D" unique_id=401883419]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1184900233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+shape = SubResource("BoxShape3D_npsrk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2066980259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+mesh = SubResource("BoxMesh_npsrk")

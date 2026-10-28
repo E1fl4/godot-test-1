@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cp8v3uvj3yixo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig1eg"]
+bounce = 999.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_npsrk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evem5"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_energy_multiplier = 1000000000000.0
+backlight_enabled = true
+proximity_fade_distance = 0.01
+
+[sub_resource type="SphereMesh" id="SphereMesh_npsrk"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_evem5")
+
+[node name="Ball" type="RigidBody3D" unique_id=1894234957]
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_ig1eg")
+gravity_scale = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=68387833]
+shape = SubResource("SphereShape3D_npsrk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=774828484]
+gi_mode = 2
+gi_lightmap_texel_scale = 10.0
+visibility_range_end = 4096.0
+mesh = SubResource("SphereMesh_npsrk")
+
+[node name="AreaLight3D" type="OmniLight3D" parent="." unique_id=1867583546]
+light_color = Color(0, 0, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 16.0
+light_size = 1.0
+light_specular = 16.0
+omni_range = 1582.254
+omni_attenuation = 2.574
