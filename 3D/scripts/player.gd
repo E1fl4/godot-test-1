@@ -18,6 +18,8 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if Input.is_action_just_pressed("fyoom"):
+		velocity = transform.basis * Vector3(0, 0, -1) * 80
 	if Input.is_action_pressed("shift"):
 		velocity.y -= 10
 	elif Input.is_action_pressed("tab"):
@@ -38,3 +40,8 @@ func _input(event: InputEvent) -> void:
 		rotate_y(-event.relative.x * 0.01)
 		$Camera3D.rotate_x(-event.relative.y * 0.01)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(89), deg_to_rad(89))
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body == self:
+		position.y = 150

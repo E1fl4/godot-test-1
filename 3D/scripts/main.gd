@@ -10,8 +10,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.keycode == KEY_E:
-			var ball = ball_scene.instantiate()
-			ball.translate(Vector3(0, 50, 0))
-			add_child(ball)
+	if event.is_action_pressed("e"):
+		var ball = ball_scene.instantiate()
+		ball.translate(Vector3(0, 60, 0))
+		add_child(ball)
+	elif event is InputEventKey && event.keycode == KEY_R:
+		var box = box_scene.instantiate()
+		box.translate(Vector3(0, 50, 0))
+		add_child(box)

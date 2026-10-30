@@ -30,6 +30,9 @@ background_mode = 2
 sky = SubResource("Sky_npsrk")
 glow_enabled = true
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bjd11"]
+plane = Plane(0, 1, 0, -50)
+
 [node name="Main" type="Node" unique_id=1905994280]
 script = ExtResource("1_bjd11")
 box_scene = ExtResource("1_lhr70")
@@ -57,3 +60,11 @@ environment = SubResource("Environment_cm0pq")
 
 [node name="Ball" parent="." unique_id=1894234957 instance=ExtResource("11_wp0k4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5405788, 5.045136, -6.5023165)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1250362346]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1066345275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.010202, 0)
+shape = SubResource("WorldBoundaryShape3D_bjd11")
+
+[connection signal="body_entered" from="Area3D" to="Player" method="_on_area_3d_body_entered"]
